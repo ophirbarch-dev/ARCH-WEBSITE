@@ -1,0 +1,10 @@
+# Original screenshots (already copied to images/)
+צילום מסך*.png
+
+# Portfolio PDF (large file, not needed for website)
+*.pdf
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
