@@ -190,9 +190,30 @@ a { text-decoration: none; color: inherit; }
   min-height: 600px;
   background: #1e3a52;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: calc(var(--header-h) + 40px);
   padding-bottom: 80px;
   overflow: hidden;
+}
+
+.hero-logo-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-logo-main {
+  width: 320px;
+  max-width: 55vw;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  background: rgba(255,255,255,0.94);
+  padding: 30px 52px;
 }
 
 /* Subtle texture overlay */
@@ -622,6 +643,7 @@ a { text-decoration: none; color: inherit; }
   .mobile-nav { padding: 20px 24px 30px; }
 
   .hero-content { padding: 0 24px; }
+  .hero-logo-main { width: 240px; padding: 22px 36px; }
 
   .about-grid { grid-template-columns: 1fr; gap: 50px; }
   .about-stats { padding-top: 0; }
@@ -647,6 +669,7 @@ a { text-decoration: none; color: inherit; }
 
 @media (max-width: 480px) {
   .hero-title { font-size: 40px; }
+  .hero-logo-main { width: 200px; padding: 18px 28px; }
   .about-stats { grid-template-columns: 1fr 1fr; gap: 28px; }
   .stat-num { font-size: 34px; }
   .btn-submit { align-self: stretch; text-align: center; }
