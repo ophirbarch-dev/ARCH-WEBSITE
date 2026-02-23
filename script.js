@@ -2,15 +2,26 @@
 // OFIR BEKER ARCHITECTURE — Portfolio Site JS
 // ============================================================
 
-// --- Header scroll effect ---
+// --- Header scroll effect + scroll-to-top button ---
 const header = document.getElementById('site-header');
+const scrollTopBtn = document.getElementById('scrollTop');
+
 window.addEventListener('scroll', () => {
   if (window.scrollY > 50) {
     header.classList.add('scrolled');
   } else {
     header.classList.remove('scrolled');
   }
+  if (window.scrollY > 400) {
+    scrollTopBtn.classList.add('visible');
+  } else {
+    scrollTopBtn.classList.remove('visible');
+  }
 }, { passive: true });
+
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 // --- Mobile hamburger ---
 const hamburger = document.getElementById('hamburger');

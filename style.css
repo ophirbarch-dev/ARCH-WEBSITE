@@ -622,6 +622,35 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 0.05em;
 }
 
+/* ---------- SCROLL TO TOP ---------- */
+.scroll-top {
+  position: fixed;
+  bottom: 36px;
+  left: 36px;
+  width: 46px;
+  height: 46px;
+  background: var(--green);
+  color: var(--white);
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity var(--transition), transform var(--transition), background var(--transition);
+  z-index: 200;
+  border-radius: var(--radius);
+}
+.scroll-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.scroll-top:hover { background: var(--green-dk); }
+
 /* ---------- FADE IN ANIMATIONS ---------- */
 .fade-in {
   opacity: 0;
