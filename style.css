@@ -190,14 +190,15 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 24px;
   padding-top: calc(var(--header-h) + 50px);
   padding-bottom: 80px;
   overflow: hidden;
 }
 
 .hero-logo-center {
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -638,6 +639,34 @@ a { text-decoration: none; color: inherit; }
 }
 .scroll-top:hover { background: var(--green-dk); }
 
+/* ── SKETCHES SECTION ── */
+.sketches-section { background: var(--cream); }
+.sketches-title {
+  font-size: clamp(28px, 3vw, 42px);
+  color: var(--dark);
+  margin-bottom: 40px;
+}
+.sketches-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.sketch-item {
+  margin: 0;
+  border: 1px solid var(--cream-dk);
+  border-radius: 2px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.sketch-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.sketch-item:hover img { transform: scale(1.03); }
+
 /* ---------- FADE IN ANIMATIONS ---------- */
 .fade-in {
   opacity: 0;
@@ -690,4 +719,5 @@ a { text-decoration: none; color: inherit; }
   .stat-num { font-size: 34px; }
   .btn-submit { align-self: stretch; text-align: center; }
   .exp-item { grid-template-columns: 80px 1fr; }
+  .sketches-grid { grid-template-columns: 1fr; }
 }
