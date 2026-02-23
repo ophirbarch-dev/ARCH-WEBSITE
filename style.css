@@ -7,14 +7,14 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --green:     #435c4c;   /* levant's exact green */
-  --green-lt:  #789c85;   /* lighter green accent */
-  --green-bg:  #eef2ef;   /* very light green tint for alternating sections */
-  --cream:     #faf8f4;   /* warm off-white — main bg */
-  --cream-dk:  #ede8df;   /* slightly darker cream for borders */
-  --dark:      #1e2025;   /* near-black — text only */
-  --mid:       #505562;   /* levant's secondary text */
-  --light:     #9a9a8a;   /* muted labels */
+  --green:     #4d87a5;   /* steel blue from logo */
+  --green-lt:  #7aaec5;   /* lighter blue accent */
+  --green-bg:  #edf4f8;   /* very light blue tint for alternating sections */
+  --cream:     #f8f9fa;   /* cool off-white — main bg */
+  --cream-dk:  #dde4ea;   /* slightly darker for borders */
+  --dark:      #1a1e24;   /* near-black — text only */
+  --mid:       #4a5263;   /* secondary text */
+  --light:     #8a96a3;   /* muted labels */
   --white:     #ffffff;
 
   --font: 'Heebo', sans-serif;
@@ -200,8 +200,8 @@ a { text-decoration: none; color: inherit; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(160deg, #2b3f33 0%, transparent 55%),
-    linear-gradient(320deg, #1e2b22 0%, transparent 50%);
+    linear-gradient(160deg, #1e3040 0%, transparent 55%),
+    linear-gradient(320deg, #162430 0%, transparent 50%);
   opacity: 0.7;
 }
 
@@ -219,7 +219,7 @@ a { text-decoration: none; color: inherit; }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(30,40,33,0.85) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(20,35,48,0.85) 0%, transparent 60%);
   z-index: 1;
 }
 
