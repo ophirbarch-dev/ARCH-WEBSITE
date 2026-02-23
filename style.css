@@ -64,10 +64,10 @@ a { text-decoration: none; color: inherit; }
   position: fixed;
   top: 0; right: 0; left: 0;
   z-index: 100;
-  background: rgba(250,248,244,0.0);
-  backdrop-filter: blur(0px);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
   transition: background var(--transition), backdrop-filter var(--transition), border-color var(--transition);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid var(--cream-dk);
 }
 
 /* On light hero: header becomes white on scroll */
@@ -92,15 +92,14 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   text-decoration: none;
 }
-/* Default (on dark hero): show white-filtered logo */
+/* Real-color logo on white hero */
 .logo-img {
   height: 44px;
   width: auto;
-  opacity: 0.92;
+  opacity: 1;
   transition: opacity var(--transition), filter var(--transition);
-  filter: brightness(0) invert(1);   /* white on dark hero */
+  filter: none;
 }
-/* Once scrolled (light header): show original colored logo */
 .site-header.scrolled .logo-img {
   filter: none;
   opacity: 1;
@@ -122,12 +121,11 @@ a { text-decoration: none; color: inherit; }
 .main-nav a {
   font-size: 13px;
   font-weight: 400;
-  color: rgba(255,255,255,0.85);   /* white on dark hero */
+  color: var(--mid);
   letter-spacing: 0.08em;
   transition: color var(--transition);
   position: relative;
 }
-/* Once scrolled: dark text on light header */
 .site-header.scrolled .main-nav a {
   color: var(--mid);
 }
@@ -158,7 +156,7 @@ a { text-decoration: none; color: inherit; }
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--white);
+  background: var(--dark);
   transition: transform var(--transition), opacity var(--transition), background var(--transition);
 }
 .site-header.scrolled .hamburger span { background: var(--dark); }
@@ -183,16 +181,17 @@ a { text-decoration: none; color: inherit; }
 .mobile-link:last-child { border-bottom: none; }
 
 /* ---------- HERO ---------- */
-/* Keep hero dark — it's the "dramatic" opening, like levant does with full-bleed */
+/* Hero — white, logo-forward */
 .hero {
   position: relative;
   height: 100vh;
   min-height: 600px;
-  background: #1e3a52;
+  background: var(--white);
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  padding-top: calc(var(--header-h) + 40px);
+  padding-top: calc(var(--header-h) + 50px);
   padding-bottom: 80px;
   overflow: hidden;
 }
@@ -204,46 +203,33 @@ a { text-decoration: none; color: inherit; }
   justify-content: center;
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 .hero-logo-main {
-  width: 320px;
-  max-width: 55vw;
+  width: min(880px, 82vw);
   height: auto;
   display: block;
   object-fit: contain;
-  background: rgba(255,255,255,0.94);
-  padding: 30px 52px;
+  background: none;
+  padding: 0;
 }
 
-/* Subtle texture overlay */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(160deg, #132840 0%, transparent 55%),
-    linear-gradient(320deg, #0e1e30 0%, transparent 50%);
-  opacity: 0.7;
-}
+/* Subtle grid on white hero */
+.hero::before { display: none; }
 
-/* Subtle grid */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(77,135,165,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(77,135,165,0.05) 1px, transparent 1px);
   background-size: 60px 60px;
+  pointer-events: none;
 }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(10,25,38,0.9) 0%, transparent 60%);
-  z-index: 1;
-}
+.hero-overlay { display: none; }
 
 .hero-content {
   position: relative;
@@ -252,6 +238,7 @@ a { text-decoration: none; color: inherit; }
   width: 100%;
   margin: 0 auto;
   padding: 0 40px;
+  text-align: center;
 }
 
 .hero-label {
@@ -259,14 +246,14 @@ a { text-decoration: none; color: inherit; }
   font-weight: 400;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--green-lt);
+  color: var(--green);
   margin-bottom: 20px;
 }
 
 .hero-title {
-  font-size: clamp(48px, 7vw, 96px);
+  font-size: clamp(36px, 5vw, 72px);
   font-weight: 700;
-  color: var(--white);
+  color: var(--dark);
   line-height: 1.05;
   letter-spacing: -0.01em;
   margin-bottom: 40px;
@@ -275,17 +262,17 @@ a { text-decoration: none; color: inherit; }
 .btn-outline {
   display: inline-block;
   padding: 14px 36px;
-  border: 1px solid rgba(255,255,255,0.45);
-  color: var(--white);
+  border: 1px solid var(--green);
+  color: var(--green);
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.1em;
   transition: background var(--transition), border-color var(--transition), color var(--transition);
 }
 .btn-outline:hover {
-  background: var(--white);
-  color: var(--green);
-  border-color: var(--white);
+  background: var(--green);
+  color: var(--white);
+  border-color: var(--green);
 }
 
 .hero-scroll-hint {
@@ -293,7 +280,7 @@ a { text-decoration: none; color: inherit; }
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  color: rgba(255,255,255,0.35);
+  color: var(--light);
   font-size: 20px;
   z-index: 2;
   animation: bounce 2s infinite;
@@ -672,7 +659,7 @@ a { text-decoration: none; color: inherit; }
   .mobile-nav { padding: 20px 24px 30px; }
 
   .hero-content { padding: 0 24px; }
-  .hero-logo-main { width: 240px; padding: 22px 36px; }
+  .hero-logo-main { width: min(560px, 88vw); }
 
   .about-grid { grid-template-columns: 1fr; gap: 50px; }
   .about-stats { padding-top: 0; }
@@ -697,8 +684,8 @@ a { text-decoration: none; color: inherit; }
 }
 
 @media (max-width: 480px) {
-  .hero-title { font-size: 40px; }
-  .hero-logo-main { width: 200px; padding: 18px 28px; }
+  .hero-title { font-size: 32px; }
+  .hero-logo-main { width: min(340px, 90vw); }
   .about-stats { grid-template-columns: 1fr 1fr; gap: 28px; }
   .stat-num { font-size: 34px; }
   .btn-submit { align-self: stretch; text-align: center; }
