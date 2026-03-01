@@ -357,6 +357,15 @@
   <!-- SCROLL TO TOP -->
   <button class="scroll-top" id="scrollTop" aria-label="חזרה למעלה">↑</button>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="סגור">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="הקודם">❮</button>
+    <img id="lightboxImg" src="" alt="" />
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="הבא">❯</button>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+
   <script src="script.js?v=5"></script>
 </body>
 </html>
