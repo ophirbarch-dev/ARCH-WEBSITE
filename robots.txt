@@ -17,4 +17,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://b-arak.github.io/becker-architects/sitemap.xml
+Sitemap: https://ophirbarch-dev.github.io/ARCH-WEBSITE/sitemap.xml
