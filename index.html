@@ -116,7 +116,14 @@
       </a>
       <nav class="main-nav">
         <a href="#about">אודות</a>
-        <a href="#projects">פרויקטים</a>
+        <div class="nav-item">
+          <a href="#projects">פרויקטים</a>
+          <div class="nav-dropdown">
+            <a href="taba.html">תב"ע</a>
+            <a href="public-buildings.html">מבני ציבור</a>
+            <a href="residential.html">מגורים</a>
+          </div>
+        </div>
         <a href="#contact">צור קשר</a>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="תפריט">
@@ -126,6 +133,9 @@
     <nav class="mobile-nav" id="mobile-nav">
       <a href="#about" class="mobile-link">אודות</a>
       <a href="#projects" class="mobile-link">פרויקטים</a>
+      <a href="taba.html" class="mobile-link mobile-sub">— תב"ע</a>
+      <a href="public-buildings.html" class="mobile-link mobile-sub">— מבני ציבור</a>
+      <a href="residential.html" class="mobile-link mobile-sub">— מגורים</a>
       <a href="#contact" class="mobile-link">צור קשר</a>
     </nav>
   </header>
@@ -196,8 +206,8 @@
             <span class="stat-label">אדריכל רשוי</span>
           </div>
           <div class="stat">
-            <span class="stat-num">7+</span>
-            <span class="stat-label">פרויקטים</span>
+            <span class="stat-num">200+</span>
+            <span class="stat-label stat-label-long">ניסיון בעבודה, תכנון, ליווי ובדיקות התכנות</span>
           </div>
           <div class="stat">
             <span class="stat-num">408</span>
@@ -227,135 +237,45 @@
       <h2 class="projects-title">תיק עבודות</h2>
     </div>
 
-    <!-- Project 1 -->
-    <article class="project-block project-dark" id="proj2">
-      <div class="project-info">
-        <span class="proj-tag">מבנה ציבור</span>
-        <h3>רה-תכנון מבנה ציבור<br/>1,600 מ"ר</h3>
-        <p>
-          מבנה רב-תכליתי בהיקף של 1,600 מ"ר — תכנון כולל, תיאום יועצים וניהול ביצוע.
-          הפרויקט כולל מבנה קיים שעבר הרחבה ושיפוץ מקיף.
-        </p>
-        <div class="proj-meta">
-          <span>ישראל</span>
-          <span>|</span>
-          <span>מבנה ציבור · ביצוע</span>
-        </div>
-      </div>
-      <div class="project-image-wrap">
-        <div class="proj-gallery">
-          <img src="images/proj2.png" alt="מבנה ציבור בביצוע" loading="lazy" class="gallery-main" />
-          <img src="images/proj2b.png" alt="תוכנית ביצוע" loading="lazy" class="gallery-thumb" />
-        </div>
-      </div>
-    </article>
+    <div class="category-grid">
 
-    <!-- Project 3 -->
-    <article class="project-block project-dark" id="proj3">
-      <div class="project-image-wrap">
-        <div class="proj-gallery">
-          <img src="images/proj3.png" alt="מבנים דו משפחתיים יישוב אדם" loading="lazy" class="gallery-main" />
-          <img src="images/proj3b.png" alt="חזית מבנים יישוב אדם" loading="lazy" class="gallery-thumb" />
+      <a href="taba.html" class="cat-card">
+        <div class="cat-img-wrap">
+          <img src="images/proj6.png" alt='תב"ע נקודתית' loading="lazy" />
         </div>
-      </div>
-      <div class="project-info">
-        <span class="proj-tag">מגורים</span>
-        <h3>מבנים דו-משפחתיים<br/>יישוב אדם · 2022</h3>
-        <p>
-          תכנון מבנים דו-משפחתיים ביישוב אדם — 2022. הפרויקט כולל מספר יחידות דיור
-          עם חזית אחידה ועיצוב אדריכלי ייחודי המשתלב בנוף הקיים.
-        </p>
-        <div class="proj-meta">
-          <span>יישוב אדם</span>
-          <span>|</span>
-          <span>מגורים · תכנון וביצוע</span>
+        <div class="cat-info">
+          <span class="cat-num">01</span>
+          <h3>תב"ע</h3>
+          <p>תכנון סטטוטורי, איחוד וחלוקה ותב"עות נקודתיות</p>
+          <span class="cat-arrow">←</span>
         </div>
-      </div>
-    </article>
+      </a>
 
-    <!-- Project 4 -->
-    <article class="project-block project-light" id="proj4">
-      <div class="project-info">
-        <span class="proj-tag">מגורים · כפרי</span>
-        <h3>בית המייסדים<br/>מושב</h3>
-        <p>
-          תכנון בית המייסדים במושב — שילוב בין ארכיטקטורה מסורתית לעיצוב עכשווי.
-          הפרויקט כולל תוכניות, חתכים וסקיצות קונספט ייחודיות.
-        </p>
-        <div class="proj-meta">
-          <span>מושב</span>
-          <span>|</span>
-          <span>מגורים · תכנון</span>
+      <a href="public-buildings.html" class="cat-card">
+        <div class="cat-img-wrap">
+          <img src="images/proj2.png" alt="מבני ציבור" loading="lazy" />
         </div>
-      </div>
-      <div class="project-image-wrap">
-        <img src="images/proj4.png" alt="בית המייסדים מושב" loading="lazy" />
-      </div>
-    </article>
+        <div class="cat-info">
+          <span class="cat-num">02</span>
+          <h3>מבני ציבור</h3>
+          <p>תכנון, שיפוץ ורה-תכנון מבנים רב-תכליתיים</p>
+          <span class="cat-arrow">←</span>
+        </div>
+      </a>
 
-    <!-- Project 5 -->
-    <article class="project-block project-dark" id="proj5">
-      <div class="project-image-wrap">
-        <img src="images/proj5.png" alt="רה תכנון בית מנורים" loading="lazy" />
-      </div>
-      <div class="project-info">
-        <span class="proj-tag">הריסה ובנייה</span>
-        <h3>רה-תכנון בית מנורים<br/>הריסה ובנייה</h3>
-        <p>
-          רה-תכנון לבית מגורים קיים — הריסה ובנייה מחדש. הפרויקט כולל הגדלת שטח
-          הבנייה, עדכון חלוקה פנימית ושדרוג מעטפת הבניין.
-        </p>
-        <div class="proj-meta">
-          <span>ישראל</span>
-          <span>|</span>
-          <span>מגורים · הריסה ובנייה</span>
+      <a href="residential.html" class="cat-card">
+        <div class="cat-img-wrap">
+          <img src="images/proj3.png" alt="מגורים" loading="lazy" />
         </div>
-      </div>
-    </article>
+        <div class="cat-info">
+          <span class="cat-num">03</span>
+          <h3>מגורים</h3>
+          <p>בתים פרטיים, בנייה רוויה והתחדשות עירונית</p>
+          <span class="cat-arrow">←</span>
+        </div>
+      </a>
 
-    <!-- Project 6 — תב"ע הרצליה -->
-    <article class="project-block project-dark" id="proj6">
-      <div class="project-info">
-        <span class="proj-tag">תב"עות</span>
-        <h3>תב"ע נקודתית<br/>איחוד וחלוקה · הרצליה</h3>
-        <p>
-          תב"ע נקודתית לאיחוד וחלוקה מחדש של מגרשים בהרצליה — לקראת הפקדה.
-          הפרויקט כולל תכנון סטטוטורי מלא, תיאום עם רשויות התכנון וליווי הליך האישור.
-        </p>
-        <div class="proj-meta">
-          <span>הרצליה</span>
-          <span>|</span>
-          <span>תב"עות · תכנון סטטוטורי</span>
-        </div>
-      </div>
-      <div class="project-image-wrap">
-        <img src="images/proj6.png" alt="תב&quot;ע נקודתית איחוד וחלוקה הרצליה" loading="lazy" />
-      </div>
-    </article>
-
-    <!-- Project 7 — ביטמן בן צור -->
-    <article class="project-block project-light" id="proj1">
-      <div class="project-image-wrap">
-        <div class="proj-gallery">
-          <img src="images/proj1.png" alt="התחדשות עירונית ירושלים" loading="lazy" class="gallery-main" />
-          <img src="images/proj1b.png" alt="תוכנית מגדל ירושלים" loading="lazy" class="gallery-thumb" />
-        </div>
-      </div>
-      <div class="project-info">
-        <span class="proj-tag">התחדשות עירונית</span>
-        <h3>מגדלי ירושלים<br/>408 + 11 יח"ד</h3>
-        <p>
-          פרויקט התחדשות עירונית בירושלים — אדריכל אחראי במשרד בן צור אדריכלים.
-          מגדל מגורים בן 7 קומות ומגדל שימור בן 11 קומות לשימוש מסחרי ומגורים.
-        </p>
-        <div class="proj-meta">
-          <span>ירושלים</span>
-          <span>|</span>
-          <span>התחדשות עירונית · אחראי אדריכל</span>
-        </div>
-      </div>
-    </article>
-
+    </div>
   </section>
 
   <!-- DIVIDER 3: bold single stroke, gestural -->
@@ -410,6 +330,12 @@
         </figure>
         <figure class="sketch-item">
           <img src="images/sketch2.png" alt="סקיצת חתך — בית מגורים" loading="lazy" />
+        </figure>
+        <figure class="sketch-item">
+          <img src="images/סקיצה 3 .png" alt="סקיצה 3" loading="lazy" />
+        </figure>
+        <figure class="sketch-item">
+          <img src="images/סקיצה 4.png" alt="סקיצה 4" loading="lazy" />
         </figure>
       </div>
     </div>

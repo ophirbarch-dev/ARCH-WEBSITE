@@ -60,6 +60,78 @@ function handleSubmit(e) {
   setTimeout(() => success.classList.remove('visible'), 5000);
 }
 
+// --- Lightbox with navigation ---
+const lightbox      = document.getElementById('lightbox');
+const lightboxImg   = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+const lightboxPrev  = document.getElementById('lightboxPrev');
+const lightboxNext  = document.getElementById('lightboxNext');
+const lightboxCounter = document.getElementById('lightboxCounter');
+
+if (lightbox) {
+  let currentImages = [];
+  let currentIndex  = 0;
+
+  // Collect images from the same project-image-wrap
+  document.querySelectorAll('.project-image-wrap img').forEach(img => {
+    img.addEventListener('click', () => {
+      const wrap = img.closest('.project-image-wrap');
+      currentImages = Array.from(wrap.querySelectorAll('img'));
+      currentIndex  = currentImages.indexOf(img);
+      openLightbox(currentIndex);
+    });
+  });
+
+  function openLightbox(index) {
+    lightboxImg.src = currentImages[index].src;
+    lightboxImg.alt = currentImages[index].alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    updateNav();
+  }
+
+  function updateNav() {
+    const total = currentImages.length;
+    const showNav = total > 1;
+    lightboxPrev.style.display = showNav ? 'flex' : 'none';
+    lightboxNext.style.display = showNav ? 'flex' : 'none';
+    lightboxPrev.disabled = currentIndex === 0;
+    lightboxNext.disabled = currentIndex === total - 1;
+    lightboxCounter.textContent = showNav ? `${currentIndex + 1} / ${total}` : '';
+  }
+
+  lightboxPrev.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentIndex > 0) { currentIndex--; openLightbox(currentIndex); }
+  });
+
+  lightboxNext.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentIndex < currentImages.length - 1) { currentIndex++; openLightbox(currentIndex); }
+  });
+
+  // Close on overlay click (not on image or nav buttons)
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft'  && currentIndex < currentImages.length - 1) { currentIndex++; openLightbox(currentIndex); }
+    if (e.key === 'ArrowRight' && currentIndex > 0) { currentIndex--; openLightbox(currentIndex); }
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    lightboxImg.removeAttribute('src');
+    currentImages = [];
+  }
+}
+
 // --- Fade-in on scroll (Intersection Observer) ---
 const observerOptions = {
   threshold: 0.12,
