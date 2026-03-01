@@ -82,6 +82,17 @@ if (lightbox) {
     });
   });
 
+  // Sketches gallery — all sketch images as one navigable set
+  const sketchImgs = document.querySelectorAll('.sketch-item img');
+  sketchImgs.forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => {
+      currentImages = Array.from(sketchImgs);
+      currentIndex  = currentImages.indexOf(img);
+      openLightbox(currentIndex);
+    });
+  });
+
   function openLightbox(index) {
     lightboxImg.src = currentImages[index].src;
     lightboxImg.alt = currentImages[index].alt;
