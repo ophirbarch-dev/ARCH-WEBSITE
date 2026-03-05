@@ -87,7 +87,7 @@
         </div>
         <div class="project-image-wrap">
           <div class="proj-gallery">
-            <img src="images/proj3.png" alt="מבנים דו משפחתיים יישוב אדם" loading="lazy" class="gallery-main" />
+            <img src="images/proj3.png" alt="מבנים דו משפחתיים יישוב אדם" loading="lazy" class="gallery-main" onclick="galleryNext(this)" style="cursor:pointer" />
             <div class="gallery-thumbs-row">
               <img src="images/proj3b.png" alt="חזית מבנים יישוב אדם" loading="lazy" class="gallery-thumb" />
               <img src="images/ADAM_2.png" alt="מבנים דו-משפחתיים יישוב אדם — תמונה 2" loading="lazy" class="gallery-thumb" />
@@ -146,11 +146,11 @@
   <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true">
     <button class="lightbox-close" id="lightboxClose" aria-label="סגור">✕</button>
     <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="הקודם">❮</button>
-    <img id="lightboxImg" src="" alt="" />
+    <img id="lightboxImg" src="" alt="" onclick="lightboxImgClick()" />
     <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="הבא">❯</button>
     <div class="lightbox-counter" id="lightboxCounter"></div>
   </div>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=13"></script>
 </body>
 </html>

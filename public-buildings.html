@@ -73,7 +73,7 @@
       <article class="project-block project-light" id="proj2">
         <div class="project-image-wrap">
           <div class="proj-gallery">
-            <img src="images/beit-shaan/1.png" alt="מבנה ציבור בית שאן" loading="lazy" class="gallery-main" />
+            <img src="images/beit-shaan/1.png" alt="מבנה ציבור בית שאן" loading="lazy" class="gallery-main" onclick="galleryNext(this)" style="cursor:pointer" />
             <div class="gallery-thumbs-row">
               <img src="images/beit-shaan/2.png" alt="מבנה ציבור בית שאן — 2" loading="lazy" class="gallery-thumb" />
               <img src="images/beit-shaan/3.jpg" alt="מבנה ציבור בית שאן — 3" loading="lazy" class="gallery-thumb" />
@@ -119,7 +119,7 @@
         </div>
         <div class="project-image-wrap">
           <div class="proj-gallery">
-            <img src="images/proj4.png" alt="בית המייסדים מושב" loading="lazy" class="gallery-main" />
+            <img src="images/proj4.png" alt="בית המייסדים מושב" loading="lazy" class="gallery-main" onclick="galleryNext(this)" style="cursor:pointer" />
             <div class="gallery-thumbs-row">
               <img src="images/בית המייסדים חתך .png" alt="בית המייסדים — חתך" loading="lazy" class="gallery-thumb" />
               <img src="images/בית המייסדים תכנית.png" alt="בית המייסדים — תכנית" loading="lazy" class="gallery-thumb" />
@@ -176,11 +176,11 @@
   <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true">
     <button class="lightbox-close" id="lightboxClose" aria-label="סגור">✕</button>
     <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="הקודם">❮</button>
-    <img id="lightboxImg" src="" alt="" />
+    <img id="lightboxImg" src="" alt="" onclick="lightboxImgClick()" />
     <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="הבא">❯</button>
     <div class="lightbox-counter" id="lightboxCounter"></div>
   </div>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=13"></script>
 </body>
 </html>

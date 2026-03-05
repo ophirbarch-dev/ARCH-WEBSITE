@@ -60,6 +60,24 @@ function handleSubmit(e) {
   setTimeout(() => success.classList.remove('visible'), 5000);
 }
 
+// --- Gallery carousel (called via onclick in HTML) ---
+window.galleryNext = function(mainImg) {
+  const gallery = mainImg.closest('.proj-gallery');
+  if (!gallery) return;
+
+  // Build image list once and cache on the element
+  if (!gallery._imgs) {
+    const thumbEls = gallery.querySelectorAll('.gallery-thumb');
+    gallery._imgs = [mainImg.getAttribute('src'), ...Array.from(thumbEls).map(t => t.getAttribute('src'))];
+    gallery._alts = [mainImg.getAttribute('alt'), ...Array.from(thumbEls).map(t => t.getAttribute('alt'))];
+    gallery._idx  = 0;
+  }
+
+  gallery._idx = (gallery._idx + 1) % gallery._imgs.length;
+  mainImg.src = gallery._imgs[gallery._idx];
+  mainImg.alt = gallery._alts[gallery._idx];
+};
+
 // --- Lightbox with navigation ---
 const lightbox      = document.getElementById('lightbox');
 const lightboxImg   = document.getElementById('lightboxImg');
@@ -71,16 +89,6 @@ const lightboxCounter = document.getElementById('lightboxCounter');
 if (lightbox) {
   let currentImages = [];
   let currentIndex  = 0;
-
-  // Collect images from the same project-image-wrap
-  document.querySelectorAll('.project-image-wrap img').forEach(img => {
-    img.addEventListener('click', () => {
-      const wrap = img.closest('.project-image-wrap');
-      currentImages = Array.from(wrap.querySelectorAll('img'));
-      currentIndex  = currentImages.indexOf(img);
-      openLightbox(currentIndex);
-    });
-  });
 
   // Sketches gallery — all sketch images as one navigable set
   const sketchImgs = document.querySelectorAll('.sketch-item img');
@@ -121,7 +129,15 @@ if (lightbox) {
     if (currentIndex < currentImages.length - 1) { currentIndex++; openLightbox(currentIndex); }
   });
 
-  // Close on overlay click (not on image or nav buttons)
+  // Global function called directly from img onclick in HTML
+  window.lightboxImgClick = function() {
+    if (currentIndex < currentImages.length - 1) {
+      currentIndex++;
+      openLightbox(currentIndex);
+    }
+  };
+
+  // Close on overlay background click
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) closeLightbox();
   });
