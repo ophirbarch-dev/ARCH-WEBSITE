@@ -175,3 +175,94 @@ fadeTargets.forEach(el => {
   el.classList.add('fade-in');
   observer.observe(el);
 });
+
+// --- Accessibility Widget ---
+(function () {
+  const btn   = document.getElementById('a11yBtn');
+  const panel = document.getElementById('a11yPanel');
+  if (!btn || !panel) return;
+
+  const CLS = {
+    big:      'a11y-big-text',
+    bigger:   'a11y-bigger-text',
+    contrast: 'a11y-high-contrast',
+    font:     'a11y-readable-font',
+    links:    'a11y-highlight-links'
+  };
+
+  let textLevel = 0; // 0=normal 1=big 2=bigger
+
+  function applyText() {
+    document.body.classList.remove(CLS.big, CLS.bigger);
+    if (textLevel === 1) document.body.classList.add(CLS.big);
+    if (textLevel === 2) document.body.classList.add(CLS.bigger);
+  }
+
+  function save() {
+    localStorage.setItem('a11y', JSON.stringify({
+      textLevel,
+      contrast : document.body.classList.contains(CLS.contrast),
+      font     : document.body.classList.contains(CLS.font),
+      links    : document.body.classList.contains(CLS.links)
+    }));
+  }
+
+  function updateUI() {
+    const b = document.body;
+    const $ = id => document.getElementById(id);
+    $('a11yTPlus') .classList.toggle('a11y-active', textLevel >= 1);
+    $('a11yTMinus').classList.toggle('a11y-active', textLevel >= 1);
+    $('a11yContrast').textContent = b.classList.contains(CLS.contrast) ? 'כבה' : 'הפעל';
+    $('a11yContrast').classList.toggle('a11y-active', b.classList.contains(CLS.contrast));
+    $('a11yFont')    .textContent = b.classList.contains(CLS.font)     ? 'כבה' : 'הפעל';
+    $('a11yFont')    .classList.toggle('a11y-active', b.classList.contains(CLS.font));
+    $('a11yLinks')   .textContent = b.classList.contains(CLS.links)    ? 'כבה' : 'הפעל';
+    $('a11yLinks')   .classList.toggle('a11y-active', b.classList.contains(CLS.links));
+  }
+
+  // Load saved settings
+  try {
+    const s = JSON.parse(localStorage.getItem('a11y') || '{}');
+    textLevel = s.textLevel || 0;
+    applyText();
+    if (s.contrast) document.body.classList.add(CLS.contrast);
+    if (s.font)     document.body.classList.add(CLS.font);
+    if (s.links)    document.body.classList.add(CLS.links);
+  } catch(e) {}
+  updateUI();
+
+  // Toggle panel
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    panel.classList.toggle('open');
+  });
+  document.addEventListener('click', e => {
+    if (!panel.contains(e.target) && e.target !== btn)
+      panel.classList.remove('open');
+  });
+
+  document.getElementById('a11yTPlus').addEventListener('click', () => {
+    textLevel = Math.min(textLevel + 1, 2);
+    applyText(); save(); updateUI();
+  });
+  document.getElementById('a11yTMinus').addEventListener('click', () => {
+    textLevel = Math.max(textLevel - 1, 0);
+    applyText(); save(); updateUI();
+  });
+  document.getElementById('a11yContrast').addEventListener('click', () => {
+    document.body.classList.toggle(CLS.contrast); save(); updateUI();
+  });
+  document.getElementById('a11yFont').addEventListener('click', () => {
+    document.body.classList.toggle(CLS.font); save(); updateUI();
+  });
+  document.getElementById('a11yLinks').addEventListener('click', () => {
+    document.body.classList.toggle(CLS.links); save(); updateUI();
+  });
+  document.getElementById('a11yReset').addEventListener('click', () => {
+    textLevel = 0;
+    applyText();
+    document.body.classList.remove(...Object.values(CLS));
+    localStorage.removeItem('a11y');
+    updateUI();
+  });
+})();

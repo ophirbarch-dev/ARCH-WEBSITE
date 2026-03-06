@@ -155,6 +155,33 @@
     <div class="lightbox-counter" id="lightboxCounter"></div>
   </div>
 
-  <script src="script.js?v=14"></script>
+  <!-- ACCESSIBILITY WIDGET -->
+  <button class="a11y-btn" id="a11yBtn" aria-label="אפשרויות נגישות" aria-expanded="false" title="נגישות">♿</button>
+  <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="תפריט נגישות">
+    <h3>♿ נגישות</h3>
+    <div class="a11y-option">
+      <span>גודל טקסט</span>
+      <div class="a11y-btns">
+        <button id="a11yTMinus" aria-label="הקטן טקסט">A−</button>
+        <button id="a11yTPlus"  aria-label="הגדל טקסט">A+</button>
+      </div>
+    </div>
+    <div class="a11y-option">
+      <span>ניגודיות גבוהה</span>
+      <button id="a11yContrast" aria-label="ניגודיות גבוהה">הפעל</button>
+    </div>
+    <div class="a11y-option">
+      <span>גופן קריא</span>
+      <button id="a11yFont" aria-label="גופן קריא">הפעל</button>
+    </div>
+    <div class="a11y-option">
+      <span>הדגשת קישורים</span>
+      <button id="a11yLinks" aria-label="הדגשת קישורים">הפעל</button>
+    </div>
+    <button class="a11y-reset" id="a11yReset">איפוס הגדרות</button>
+    <a href="accessibility.html" class="a11y-decl-link">הצהרת נגישות</a>
+  </div>
+
+  <script src="script.js?v=15"></script>
 </body>
 </html>
