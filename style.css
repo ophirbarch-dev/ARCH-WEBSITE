@@ -873,8 +873,8 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* Accessibility body modes */
-body.a11y-big-text    { font-size: 118% !important; }
-body.a11y-bigger-text { font-size: 136% !important; }
+body.a11y-big-text    { zoom: 1.2; }
+body.a11y-bigger-text { zoom: 1.4; }
 body.a11y-high-contrast { filter: contrast(160%) brightness(1.05); }
 body.a11y-readable-font * { font-family: Arial, Helvetica, sans-serif !important; }
 body.a11y-highlight-links a {
