@@ -2,6 +2,126 @@
 // OFIR BEKER ARCHITECTURE — Portfolio Site JS
 // ============================================================
 
+// --- Project Modal ---
+(function () {
+  const modal = document.getElementById('projModal');
+  if (!modal) return;
+
+  const modalInner = modal.querySelector('.proj-modal-inner');
+  const closeBtn   = document.getElementById('projModalClose');
+
+  window.openProjModal = function (card) {
+    const tmpl = document.getElementById(card.dataset.modal);
+    if (!tmpl) return;
+
+    modalInner.innerHTML = '';
+    modalInner.appendChild(tmpl.content.cloneNode(true));
+
+    // Thumbnail switching inside modal
+    const thumbs  = modalInner.querySelectorAll('.proj-modal-thumbs img');
+    const mainImg = modalInner.querySelector('.proj-modal-gallery-main');
+    if (thumbs.length && mainImg) {
+      thumbs.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          mainImg.src = thumb.src;
+          mainImg.alt = thumb.alt;
+          thumbs.forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+        });
+      });
+      // Click main image → open lightbox with all gallery images
+      mainImg.addEventListener('click', () => {
+        const imgs = [mainImg, ...thumbs];
+        window._pmLightboxImgs  = imgs;
+        window._pmLightboxIndex = 0;
+        openPMlightbox(0);
+      });
+    }
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Simple inner lightbox (re-uses existing lightbox overlay if present)
+  function openPMlightbox(idx) {
+    const lb = document.getElementById('lightbox');
+    if (!lb) return;
+    const imgs = window._pmLightboxImgs || [];
+    window._pmLightboxIndex = idx;
+    document.getElementById('lightboxImg').src = imgs[idx] ? imgs[idx].src : '';
+    document.getElementById('lightboxImg').alt = imgs[idx] ? imgs[idx].alt : '';
+    lb.classList.add('active');
+    // update nav
+    const prev = document.getElementById('lightboxPrev');
+    const next = document.getElementById('lightboxNext');
+    const ctr  = document.getElementById('lightboxCounter');
+    const show = imgs.length > 1;
+    if (prev) { prev.style.display = show ? 'flex' : 'none'; prev.disabled = idx === 0; }
+    if (next) { next.style.display = show ? 'flex' : 'none'; next.disabled = idx === imgs.length - 1; }
+    if (ctr)  { ctr.textContent = show ? `${idx + 1} / ${imgs.length}` : ''; }
+  }
+  window._openPMlightbox = openPMlightbox;
+
+  if (closeBtn) closeBtn.addEventListener('click', closeProjModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeProjModal(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeProjModal();
+  });
+
+  function closeProjModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+})();
+
+// --- Custom Cursor ---
+(function () {
+  if (window.matchMedia('(hover: none)').matches) return; // touch devices
+
+  const dot  = document.createElement('div');
+  dot.className = 'custom-cursor-dot';
+  const ring = document.createElement('div');
+  ring.className = 'custom-cursor-ring';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+  document.body.classList.add('custom-cursor-active');
+
+  let mx = -200, my = -200;
+  let rx = -200, ry = -200;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX;
+    my = e.clientY;
+    dot.style.left = mx + 'px';
+    dot.style.top  = my + 'px';
+  }, { passive: true });
+
+  (function animRing() {
+    rx += (mx - rx) * 0.13;
+    ry += (my - ry) * 0.13;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animRing);
+  })();
+
+  const hoverSel = 'a, button, .proj-card, input, textarea, select, label, [onclick]';
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest(hoverSel)) document.body.classList.add('cursor-hovering');
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest(hoverSel)) document.body.classList.remove('cursor-hovering');
+  });
+
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity  = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity  = '1';
+    ring.style.opacity = '1';
+  });
+})();
+
 // --- Header scroll effect + scroll-to-top button ---
 const header = document.getElementById('site-header');
 const scrollTopBtn = document.getElementById('scrollTop');

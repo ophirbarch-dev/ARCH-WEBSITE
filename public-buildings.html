@@ -68,89 +68,108 @@
       </svg>
     </div>
 
-    <!-- PROJECTS -->
-    <section class="projects" id="projects" style="padding-top:0; padding-bottom:0;">
+    <!-- PROJECTS CARDS -->
+    <section id="projects">
+      <div class="proj-cards-grid">
 
-      <!-- רה תכנון מבנה ציבור 1,600 מ"ר -->
-      <article class="project-block project-light" id="proj2">
-        <div class="project-image-wrap">
-          <div class="proj-gallery">
-            <img src="images/beit-shaan/1.png" alt="מבנה ציבור בית שאן" loading="lazy" class="gallery-main" onclick="galleryOpen(this)" style="cursor:pointer" />
-            <div class="gallery-thumbs-row">
-              <img src="images/beit-shaan/2.png" alt="מבנה ציבור בית שאן — 2" loading="lazy" class="gallery-thumb" />
-              <img src="images/beit-shaan/3.jpg" alt="מבנה ציבור בית שאן — 3" loading="lazy" class="gallery-thumb" />
-              <img src="images/beit-shaan/4.jpg" alt="מבנה ציבור בית שאן — שרטוט אדריכלי" loading="lazy" class="gallery-thumb" />
-              <img src="images/beit-shaan/IMG_8769.jpeg" alt="מבנה ציבור בית שאן — תצלום 1" loading="lazy" class="gallery-thumb" />
-              <img src="images/beit-shaan/IMG_8797.jpeg" alt="מבנה ציבור בית שאן — תצלום 2" loading="lazy" class="gallery-thumb" />
-              <img src="images/beit-shaan/Screenshot 2026-03-04 180559.png" alt="מבנה ציבור בית שאן — תכנית 1" loading="lazy" class="gallery-thumb" />
-              <img src="images/beit-shaan/Screenshot 2026-03-04 180621.png" alt="מבנה ציבור בית שאן — תכנית 2" loading="lazy" class="gallery-thumb" />
-              <img src="images/beit-shaan/Screenshot 2026-03-04 180647.png" alt="מבנה ציבור בית שאן — תכנית 3" loading="lazy" class="gallery-thumb" />
-              <img src="images/beit-shaan/Screenshot 2026-03-04 180704.png" alt="מבנה ציבור בית שאן — תכנית 4" loading="lazy" class="gallery-thumb" />
-            </div>
+        <!-- מבנה ציבור בית שאן -->
+        <div class="proj-card" data-modal="modal-proj2" onclick="openProjModal(this)">
+          <div class="proj-card-img">
+            <img src="images/beit-shaan/1.png" alt="מבנה ציבור בית שאן" loading="lazy" />
+          </div>
+          <div class="proj-card-label">
+            <span class="proj-card-tag">מבנה ציבור · ביצוע</span>
+            <h3>רה תכנון מבנה ציבור · 1,600 מ"ר</h3>
           </div>
         </div>
-        <div class="project-info">
-          <span class="proj-tag">מבנה ציבור · ביצוע</span>
-          <h3>רה תכנון למבנה ציבור<br/>1,600 מ"ר</h3>
-          <p>
-            מבנה רב-תכליתי בהיקף של 1,600 מ"ר — תכנון כולל, תיאום יועצים וניהול ביצוע.
-            המבנה הקיים עבר הרחבה ושיפוץ מקיף הכולל מעון ומרחבים ציבוריים.
-          </p>
-          <div class="proj-meta">
-            <span>ישראל</span>
-            <span>|</span>
-            <span>מבנה ציבור · תכנון וביצוע</span>
-          </div>
-        </div>
-      </article>
 
-      <!-- בית המייסדים -->
-      <article class="project-block project-dark" id="proj4">
-        <div class="project-info">
-          <span class="proj-tag">מבנה ציבור</span>
-          <h3>בית המייסדים<br/>מושב</h3>
-          <p>
-            תכנון בית המייסדים במושב — שילוב בין ארכיטקטורה מסורתית לעיצוב עכשווי.
-            הפרויקט כולל תוכניות, חתכים וסקיצות קונספט ייחודיות.
-          </p>
-          <div class="proj-meta">
-            <span>מושב</span>
-            <span>|</span>
-            <span>מבנה ציבור · תכנון</span>
+        <!-- בית המייסדים -->
+        <div class="proj-card" data-modal="modal-proj4" onclick="openProjModal(this)">
+          <div class="proj-card-img">
+            <img src="images/proj4.png" alt="בית המייסדים" loading="lazy" />
+          </div>
+          <div class="proj-card-label">
+            <span class="proj-card-tag">מבנה ציבור · תכנון</span>
+            <h3>בית המייסדים · מושב</h3>
           </div>
         </div>
-        <div class="project-image-wrap">
-          <div class="proj-gallery">
-            <img src="images/proj4.png" alt="בית המייסדים מושב" loading="lazy" class="gallery-main" onclick="galleryOpen(this)" style="cursor:pointer" />
-            <div class="gallery-thumbs-row">
-              <img src="images/בית המייסדים חתך .png" alt="בית המייסדים — חתך" loading="lazy" class="gallery-thumb" />
-              <img src="images/בית המייסדים תכנית.png" alt="בית המייסדים — תכנית" loading="lazy" class="gallery-thumb" />
-            </div>
-          </div>
-        </div>
-      </article>
 
-      <!-- בדיקת התכנות לבית כנסת -->
-      <article class="project-block project-light" id="proj-synagogue">
-        <div class="project-image-wrap">
-          <img src="images/גרסה_5___בית_כנסת_המחנה_-2025.08.08-1-100_A3.jpg" alt="בדיקת התכנות לעדכון היתר לבית כנסת" loading="lazy" />
-        </div>
-        <div class="project-info">
-          <span class="proj-tag">מבנה ציבור · בדיקת התכנות</span>
-          <h3>בדיקת התכנות<br/>לעדכון היתר לבית כנסת</h3>
-          <p>
-            בדיקת התכנות לעדכון היתר בניה לבית כנסת — בחינת הזכויות הקיימות,
-            ניתוח אפשרויות ההרחבה ותיאום מול רשויות הרישוי.
-          </p>
-          <div class="proj-meta">
-            <span>ישראל</span>
-            <span>|</span>
-            <span>מבנה ציבור · בדיקת התכנות</span>
+        <!-- בית כנסת -->
+        <div class="proj-card" data-modal="modal-proj-synagogue" onclick="openProjModal(this)">
+          <div class="proj-card-img">
+            <img src="images/גרסה_5___בית_כנסת_המחנה_-2025.08.08-1-100_A3.jpg" alt="בדיקת התכנות לבית כנסת" loading="lazy" />
+          </div>
+          <div class="proj-card-label">
+            <span class="proj-card-tag">מבנה ציבור · בדיקת התכנות</span>
+            <h3>בדיקת התכנות · בית כנסת</h3>
           </div>
         </div>
-      </article>
 
+      </div>
     </section>
+
+    <!-- MODAL TEMPLATES -->
+    <template id="modal-proj2">
+      <div class="proj-modal-gallery">
+        <img class="proj-modal-gallery-main" src="images/beit-shaan/1.png" alt="מבנה ציבור בית שאן" />
+        <div class="proj-modal-thumbs">
+          <img src="images/beit-shaan/1.png"                                   alt="בית שאן — 1" class="active" />
+          <img src="images/beit-shaan/2.png"                                   alt="בית שאן — 2" />
+          <img src="images/beit-shaan/3.jpg"                                   alt="בית שאן — 3" />
+          <img src="images/beit-shaan/4.jpg"                                   alt="בית שאן — שרטוט" />
+          <img src="images/beit-shaan/IMG_8769.jpeg"                           alt="בית שאן — תצלום 1" />
+          <img src="images/beit-shaan/IMG_8797.jpeg"                           alt="בית שאן — תצלום 2" />
+          <img src="images/beit-shaan/Screenshot 2026-03-04 180559.png"        alt="בית שאן — תכנית 1" />
+          <img src="images/beit-shaan/Screenshot 2026-03-04 180621.png"        alt="בית שאן — תכנית 2" />
+          <img src="images/beit-shaan/Screenshot 2026-03-04 180647.png"        alt="בית שאן — תכנית 3" />
+          <img src="images/beit-shaan/Screenshot 2026-03-04 180704.png"        alt="בית שאן — תכנית 4" />
+        </div>
+      </div>
+      <div class="proj-modal-info">
+        <span class="proj-tag">מבנה ציבור · ביצוע</span>
+        <h2>רה תכנון למבנה ציבור<br/>1,600 מ"ר</h2>
+        <p>מבנה רב-תכליתי בהיקף של 1,600 מ"ר — תכנון כולל, תיאום יועצים וניהול ביצוע. המבנה הקיים עבר הרחבה ושיפוץ מקיף הכולל מעון ומרחבים ציבוריים.</p>
+        <div class="proj-meta">
+          <span>ישראל</span><span>|</span>
+          <span>מבנה ציבור · תכנון וביצוע</span>
+        </div>
+      </div>
+    </template>
+
+    <template id="modal-proj4">
+      <div class="proj-modal-gallery">
+        <img class="proj-modal-gallery-main" src="images/proj4.png" alt="בית המייסדים" />
+        <div class="proj-modal-thumbs">
+          <img src="images/proj4.png"                    alt="בית המייסדים — מבט" class="active" />
+          <img src="images/בית המייסדים חתך .png"       alt="בית המייסדים — חתך" />
+          <img src="images/בית המייסדים תכנית.png"      alt="בית המייסדים — תכנית" />
+        </div>
+      </div>
+      <div class="proj-modal-info">
+        <span class="proj-tag">מבנה ציבור · תכנון</span>
+        <h2>בית המייסדים<br/>מושב</h2>
+        <p>תכנון בית המייסדים במושב — שילוב בין ארכיטקטורה מסורתית לעיצוב עכשווי. הפרויקט כולל תוכניות, חתכים וסקיצות קונספט ייחודיות.</p>
+        <div class="proj-meta">
+          <span>מושב</span><span>|</span>
+          <span>מבנה ציבור · תכנון</span>
+        </div>
+      </div>
+    </template>
+
+    <template id="modal-proj-synagogue">
+      <div class="proj-modal-gallery">
+        <img class="proj-modal-gallery-main" src="images/גרסה_5___בית_כנסת_המחנה_-2025.08.08-1-100_A3.jpg" alt="בדיקת התכנות לבית כנסת" />
+      </div>
+      <div class="proj-modal-info">
+        <span class="proj-tag">מבנה ציבור · בדיקת התכנות</span>
+        <h2>בדיקת התכנות<br/>לעדכון היתר לבית כנסת</h2>
+        <p>בדיקת התכנות לעדכון היתר בניה לבית כנסת — בחינת הזכויות הקיימות, ניתוח אפשרויות ההרחבה ותיאום מול רשויות הרישוי.</p>
+        <div class="proj-meta">
+          <span>ישראל</span><span>|</span>
+          <span>מבנה ציבור · בדיקת התכנות</span>
+        </div>
+      </div>
+    </template>
 
     <!-- MINI CONTACT -->
     <section class="mini-contact">
@@ -210,6 +229,12 @@
     <a href="accessibility.html" class="a11y-decl-link">הצהרת נגישות</a>
   </div>
 
-  <script src="script.js?v=15"></script>
+  <!-- PROJECT MODAL -->
+  <div class="proj-modal" id="projModal" role="dialog" aria-modal="true" aria-label="פרויקט">
+    <button class="proj-modal-close" id="projModalClose" aria-label="סגור">✕</button>
+    <div class="proj-modal-inner"></div>
+  </div>
+
+  <script src="script.js?v=16"></script>
 </body>
 </html>

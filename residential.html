@@ -68,63 +68,74 @@
       </svg>
     </div>
 
-    <!-- PROJECTS -->
-    <section class="projects" id="projects" style="padding-top:0; padding-bottom:0;">
+    <!-- PROJECTS CARDS -->
+    <section id="projects">
+      <div class="proj-cards-grid">
 
-      <!-- מבנים דו-משפחתיים יישוב אדם -->
-      <article class="project-block project-dark" id="proj3">
-        <div class="project-info">
-          <span class="proj-tag">מגורים</span>
-          <h3>מבנים דו-משפחתיים<br/>יישוב אדם · 2022</h3>
-          <p>
-            תכנון מבנים דו-משפחתיים ביישוב אדם — 2022. הפרויקט כולל מספר יחידות דיור
-            עם חזית אחידה ועיצוב אדריכלי ייחודי המשתלב בנוף הקיים.<br/>
-            <em>במסגרת עבודתי כאדריכל מתכנן בחברת מהנדסי בנימין.</em>
-          </p>
-          <div class="proj-meta">
-            <span>יישוב אדם</span>
-            <span>|</span>
-            <span>מגורים · תכנון וביצוע</span>
-            <span>|</span>
-            <span class="proj-status">● מאוכלס</span>
+        <!-- מבנים דו-משפחתיים יישוב אדם -->
+        <div class="proj-card" data-modal="modal-proj3" onclick="openProjModal(this)">
+          <div class="proj-card-img">
+            <img src="images/proj3.png" alt="מבנים דו-משפחתיים יישוב אדם" loading="lazy" />
+          </div>
+          <div class="proj-card-label">
+            <span class="proj-card-tag">מגורים</span>
+            <h3>מבנים דו-משפחתיים · יישוב אדם</h3>
           </div>
         </div>
-        <div class="project-image-wrap">
-          <div class="proj-gallery">
-            <img src="images/proj3.png" alt="מבנים דו משפחתיים יישוב אדם" loading="lazy" class="gallery-main" onclick="galleryOpen(this)" style="cursor:pointer" />
-            <div class="gallery-thumbs-row">
-              <img src="images/proj3b.png" alt="חזית מבנים יישוב אדם" loading="lazy" class="gallery-thumb" />
-              <img src="images/ADAM_2.png" alt="מבנים דו-משפחתיים יישוב אדם — תמונה 2" loading="lazy" class="gallery-thumb" />
-              <img src="images/אדם הדמיה 2  .png" alt="הדמיה יישוב אדם" loading="lazy" class="gallery-thumb" />
-              <img src="images/אדם חתך 1 .png" alt="חתך יישוב אדם" loading="lazy" class="gallery-thumb" />
-            </div>
+
+        <!-- רה-תכנון בית מנורים -->
+        <div class="proj-card" data-modal="modal-proj5" onclick="openProjModal(this)">
+          <div class="proj-card-img">
+            <img src="images/proj5.png" alt="רה-תכנון בית מנורים" loading="lazy" />
+          </div>
+          <div class="proj-card-label">
+            <span class="proj-card-tag">הריסה ובנייה</span>
+            <h3>רה-תכנון בית מנורים</h3>
           </div>
         </div>
-      </article>
 
-      <!-- רה-תכנון בית מנורים -->
-      <article class="project-block project-dark" id="proj5">
-        <div class="project-info">
-          <span class="proj-tag">הריסה ובנייה</span>
-          <h3>רה-תכנון בית מנורים<br/>הריסה ובנייה</h3>
-          <p>
-            רה-תכנון לבית מגורים קיים — הריסה ובנייה מחדש. הפרויקט כולל הגדלת שטח
-            הבנייה, עדכון חלוקה פנימית ושדרוג מעטפת הבניין.
-          </p>
-          <div class="proj-meta">
-            <span>ישראל</span>
-            <span>|</span>
-            <span>מגורים · הריסה ובנייה</span>
-            <span>|</span>
-            <span class="proj-status">● מאוכלס</span>
-          </div>
-        </div>
-        <div class="project-image-wrap">
-          <img src="images/proj5.png" alt="רה תכנון בית מנורים" loading="lazy" />
-        </div>
-      </article>
-
+      </div>
     </section>
+
+    <!-- MODAL TEMPLATES -->
+    <template id="modal-proj3">
+      <div class="proj-modal-gallery">
+        <img class="proj-modal-gallery-main" src="images/proj3.png" alt="מבנים דו-משפחתיים יישוב אדם" />
+        <div class="proj-modal-thumbs">
+          <img src="images/proj3.png"           alt="יישוב אדם — מבט 1" class="active" />
+          <img src="images/proj3b.png"           alt="יישוב אדם — חזית" />
+          <img src="images/ADAM_2.png"           alt="יישוב אדם — תמונה 2" />
+          <img src="images/אדם הדמיה 2  .png"   alt="יישוב אדם — הדמיה" />
+          <img src="images/אדם חתך 1 .png"      alt="יישוב אדם — חתך" />
+        </div>
+      </div>
+      <div class="proj-modal-info">
+        <span class="proj-tag">מגורים</span>
+        <h2>מבנים דו-משפחתיים<br/>יישוב אדם · 2022</h2>
+        <p>תכנון מבנים דו-משפחתיים ביישוב אדם — 2022. הפרויקט כולל מספר יחידות דיור עם חזית אחידה ועיצוב אדריכלי ייחודי המשתלב בנוף הקיים. במסגרת עבודתי כאדריכל מתכנן בחברת מהנדסי בנימין.</p>
+        <div class="proj-meta">
+          <span>יישוב אדם</span><span>|</span>
+          <span>מגורים · תכנון וביצוע</span><span>|</span>
+          <span class="proj-status">● מאוכלס</span>
+        </div>
+      </div>
+    </template>
+
+    <template id="modal-proj5">
+      <div class="proj-modal-gallery">
+        <img class="proj-modal-gallery-main" src="images/proj5.png" alt="רה-תכנון בית מנורים" />
+      </div>
+      <div class="proj-modal-info">
+        <span class="proj-tag">הריסה ובנייה</span>
+        <h2>רה-תכנון בית מנורים<br/>הריסה ובנייה</h2>
+        <p>רה-תכנון לבית מגורים קיים — הריסה ובנייה מחדש. הפרויקט כולל הגדלת שטח הבנייה, עדכון חלוקה פנימית ושדרוג מעטפת הבניין.</p>
+        <div class="proj-meta">
+          <span>ישראל</span><span>|</span>
+          <span>מגורים · הריסה ובנייה</span><span>|</span>
+          <span class="proj-status">● מאוכלס</span>
+        </div>
+      </div>
+    </template>
 
     <!-- MINI CONTACT -->
     <section class="mini-contact">
@@ -184,6 +195,12 @@
     <a href="accessibility.html" class="a11y-decl-link">הצהרת נגישות</a>
   </div>
 
-  <script src="script.js?v=15"></script>
+  <!-- PROJECT MODAL -->
+  <div class="proj-modal" id="projModal" role="dialog" aria-modal="true" aria-label="פרויקט">
+    <button class="proj-modal-close" id="projModalClose" aria-label="סגור">✕</button>
+    <div class="proj-modal-inner"></div>
+  </div>
+
+  <script src="script.js?v=16"></script>
 </body>
 </html>
