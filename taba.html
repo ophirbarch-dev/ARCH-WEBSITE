@@ -72,14 +72,25 @@
     <section id="projects">
       <div class="proj-cards-grid">
 
-        <!-- מגדלי ירושלים -->
-        <div class="proj-card" data-modal="modal-proj1" onclick="openProjModal(this)">
+        <!-- התחדשות עירונית מתחם קולומביה -->
+        <div class="proj-card" data-modal="modal-proj1a" onclick="openProjModal(this)">
           <div class="proj-card-img">
-            <img src="images/proj1.png" alt="מגדלי ירושלים" loading="lazy" />
+            <img src="images/proj1.png" alt="התחדשות עירונית מתחם קולומביה ירושלים" loading="lazy" />
           </div>
           <div class="proj-card-label">
             <span class="proj-card-tag">תב"ע · התחדשות עירונית</span>
-            <h3>מגדלי ירושלים</h3>
+            <h3>התחדשות עירונית<br/>מתחם קולומביה, ירושלים</h3>
+          </div>
+        </div>
+
+        <!-- עין רוגל -->
+        <div class="proj-card" data-modal="modal-proj1b" onclick="openProjModal(this)">
+          <div class="proj-card-img">
+            <img src="images/proj1b.png" alt="עין רוגל ירושלים" loading="lazy" />
+          </div>
+          <div class="proj-card-label">
+            <span class="proj-card-tag">תב"ע · התחדשות עירונית</span>
+            <h3>עין רוגל, ירושלים</h3>
           </div>
         </div>
 
@@ -98,22 +109,33 @@
     </section>
 
     <!-- MODAL TEMPLATES -->
-    <template id="modal-proj1">
+    <template id="modal-proj1a">
       <div class="proj-modal-gallery">
-        <img class="proj-modal-gallery-main" src="images/proj1.png" alt="מגדלי ירושלים" />
-        <div class="proj-modal-thumbs">
-          <img src="images/proj1.png"  alt="מגדלי ירושלים — מבט 1" class="active" />
-          <img src="images/proj1b.png" alt="מגדלי ירושלים — תוכנית" />
-        </div>
+        <img class="proj-modal-gallery-main" src="images/proj1.png" alt="התחדשות עירונית מתחם קולומביה ירושלים" />
       </div>
       <div class="proj-modal-info">
         <span class="proj-tag">תב"ע · התחדשות עירונית</span>
-        <h2>מגדלי ירושלים<br/>408 + 11 יח"ד</h2>
-        <p>פרויקט התחדשות עירונית בירושלים — במסגרת עבודתי במשרד ביטמן בן צור אדריכלים. מגדל מגורים בן 7 קומות ומגדל שימור בן 11 קומות לשימוש מסחרי ומגורים.</p>
+        <h2>התחדשות עירונית<br/>מתחם קולומביה, ירושלים</h2>
+        <p>פרויקט התחדשות עירונית במתחם קולומביה בירושלים — במסגרת עבודתי במשרד ביטמן בן צור אדריכלים. מגדל מגורים בן 7 קומות ומגדל שימור בן 11 קומות לשימוש מסחרי ומגורים.</p>
         <div class="proj-meta">
           <span>ירושלים</span><span>|</span>
           <span>תב"ע · התחדשות עירונית · אחראי אדריכל</span><span>|</span>
           <span>שנת אישור: 2019</span>
+        </div>
+      </div>
+    </template>
+
+    <template id="modal-proj1b">
+      <div class="proj-modal-gallery">
+        <img class="proj-modal-gallery-main" src="images/proj1b.png" alt="עין רוגל ירושלים" />
+      </div>
+      <div class="proj-modal-info">
+        <span class="proj-tag">תב"ע · התחדשות עירונית</span>
+        <h2>עין רוגל<br/>ירושלים</h2>
+        <p>פרויקט תב"ע בשכונת עין רוגל בירושלים — במסגרת עבודתי במשרד ביטמן בן צור אדריכלים. תכנון סטטוטורי, תיאום עם רשויות התכנון וליווי הליך האישור.</p>
+        <div class="proj-meta">
+          <span>ירושלים</span><span>|</span>
+          <span>תב"ע · התחדשות עירונית · אחראי אדריכל</span>
         </div>
       </div>
     </template>
