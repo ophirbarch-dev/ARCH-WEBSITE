@@ -21,7 +21,10 @@
     const thumbs  = modalInner.querySelectorAll('.proj-modal-thumbs img');
     const mainImg = modalInner.querySelector('.proj-modal-gallery-main');
     if (thumbs.length && mainImg) {
-      thumbs.forEach(thumb => {
+      // Build ordered image list: all thumbs (first thumb = same as main, so use mainImg)
+      const allImgs = [mainImg, ...Array.from(thumbs).slice(1)];
+
+      thumbs.forEach((thumb, i) => {
         thumb.addEventListener('click', () => {
           mainImg.src = thumb.src;
           mainImg.alt = thumb.alt;
@@ -29,38 +32,25 @@
           thumb.classList.add('active');
         });
       });
-      // Click main image → open lightbox with all gallery images
+
+      // Click main image → open lightbox with full nav support
       mainImg.addEventListener('click', () => {
-        const imgs = [mainImg, ...thumbs];
-        window._pmLightboxImgs  = imgs;
-        window._pmLightboxIndex = 0;
-        openPMlightbox(0);
+        const currentThumbIdx = Array.from(thumbs).findIndex(t => t.classList.contains('active'));
+        const startIdx = Math.max(0, currentThumbIdx);
+        if (window.openLightboxWith) {
+          window.openLightboxWith(Array.from(thumbs), startIdx);
+        }
+      });
+    } else if (mainImg) {
+      // Single image — click opens lightbox
+      mainImg.addEventListener('click', () => {
+        if (window.openLightboxWith) window.openLightboxWith([mainImg], 0);
       });
     }
 
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
   };
-
-  // Simple inner lightbox (re-uses existing lightbox overlay if present)
-  function openPMlightbox(idx) {
-    const lb = document.getElementById('lightbox');
-    if (!lb) return;
-    const imgs = window._pmLightboxImgs || [];
-    window._pmLightboxIndex = idx;
-    document.getElementById('lightboxImg').src = imgs[idx] ? imgs[idx].src : '';
-    document.getElementById('lightboxImg').alt = imgs[idx] ? imgs[idx].alt : '';
-    lb.classList.add('active');
-    // update nav
-    const prev = document.getElementById('lightboxPrev');
-    const next = document.getElementById('lightboxNext');
-    const ctr  = document.getElementById('lightboxCounter');
-    const show = imgs.length > 1;
-    if (prev) { prev.style.display = show ? 'flex' : 'none'; prev.disabled = idx === 0; }
-    if (next) { next.style.display = show ? 'flex' : 'none'; next.disabled = idx === imgs.length - 1; }
-    if (ctr)  { ctr.textContent = show ? `${idx + 1} / ${imgs.length}` : ''; }
-  }
-  window._openPMlightbox = openPMlightbox;
 
   if (closeBtn) closeBtn.addEventListener('click', closeProjModal);
   modal.addEventListener('click', e => { if (e.target === modal) closeProjModal(); });
@@ -270,6 +260,13 @@ if (lightbox) {
     lightboxImg.removeAttribute('src');
     currentImages = [];
   }
+
+  // Expose so modal can open lightbox with its own image set
+  window.openLightboxWith = function(imgs, startIdx) {
+    currentImages = imgs;
+    currentIndex  = startIdx || 0;
+    openLightbox(currentIndex);
+  };
 }
 
 // --- Fade-in on scroll (Intersection Observer) ---
