@@ -1424,12 +1424,39 @@ body.cursor-hovering .custom-cursor-dot {
 .hero-sketch .hs-p { stroke-width: 1.4; opacity: .45; --dur: .7s; }
 @keyframes hs-draw { to { stroke-dashoffset: 0; } }
 
-/* Logo "inked" in with a pen-like wipe, then the text rises */
-.hero-logo-main {
-  clip-path: inset(0 0 0 100%);
-  animation: logo-ink 1.6s cubic-bezier(.65,0,.35,1) .5s forwards;
+/* Logo drawn stroke by stroke: each pencil line of the logo is its own layer,
+   revealed with a soft-edged mask in the direction it was drawn */
+.logo-draw { position: relative; display: inline-block; line-height: 0; }
+.logo-draw-base { visibility: hidden; }
+.logo-draw .ld {
+  position: absolute;
+  object-fit: fill;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  animation-duration: var(--d);
+  animation-delay: var(--t);
+  animation-timing-function: cubic-bezier(.45,.05,.35,1);
+  animation-fill-mode: both;
 }
-@keyframes logo-ink { to { clip-path: inset(0 0 0 0); } }
+.logo-draw .ld-x {
+  -webkit-mask-image: linear-gradient(to right, #000 45%, transparent 55%);
+          mask-image: linear-gradient(to right, #000 45%, transparent 55%);
+  -webkit-mask-size: 250% 100%; mask-size: 250% 100%;
+  animation-name: ld-x;
+}
+.logo-draw .ld-y {
+  -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 55%);
+          mask-image: linear-gradient(to bottom, #000 45%, transparent 55%);
+  -webkit-mask-size: 100% 250%; mask-size: 100% 250%;
+  animation-name: ld-y;
+}
+@keyframes ld-x {
+  from { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+  to   { -webkit-mask-position: 0 0;    mask-position: 0 0; }
+}
+@keyframes ld-y {
+  from { -webkit-mask-position: 0 100%; mask-position: 0 100%; }
+  to   { -webkit-mask-position: 0 0;    mask-position: 0 0; }
+}
 /* Soft paper halo so the title stays crisp over the drawing */
 .hero-content::before {
   content: '';
@@ -1445,9 +1472,9 @@ body.cursor-hovering .custom-cursor-dot {
   transform: translateY(14px);
   animation: hero-rise .8s ease forwards;
 }
-.hero-content > :nth-child(1) { animation-delay: 1.7s; }
-.hero-content > :nth-child(2) { animation-delay: 1.9s; }
-.hero-content > :nth-child(3) { animation-delay: 2.15s; }
+.hero-content > :nth-child(1) { animation-delay: 2.5s; }
+.hero-content > :nth-child(2) { animation-delay: 2.7s; }
+.hero-content > :nth-child(3) { animation-delay: 2.95s; }
 @keyframes hero-rise { to { opacity: 1; transform: none; } }
 
 /* ---------- PROCESS JOURNEY ---------- */
@@ -1601,7 +1628,7 @@ body.cursor-hovering .custom-cursor-dot {
 
 @media (prefers-reduced-motion: reduce) {
   .hero-sketch path { animation: none; stroke-dashoffset: 0; }
-  .hero-logo-main { animation: none; clip-path: none; }
+  .logo-draw .ld { animation: none; -webkit-mask: none; mask: none; }
   .hero-content > * { animation: none; opacity: 1; transform: none; }
   .journey-img { transition: none; transform: none; }
 }
