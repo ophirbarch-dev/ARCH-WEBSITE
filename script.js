@@ -162,13 +162,110 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // --- Contact form submission (demo) ---
-function handleSubmit(e) {
+// Contact form → delivered by email via FormSubmit (no backend needed on GitHub Pages)
+const CONTACT_EMAIL = 'ophir.b.arch@gmail.com';
+async function handleSubmit(e) {
   e.preventDefault();
-  const success = document.getElementById('form-success');
-  success.classList.add('visible');
-  e.target.reset();
-  setTimeout(() => success.classList.remove('visible'), 5000);
+  const form   = e.target;
+  const status = document.getElementById('form-success');
+  const btn    = form.querySelector('.btn-submit');
+
+  const show = (html, isError) => {
+    status.innerHTML = html;
+    status.classList.toggle('error', !!isError);
+    status.classList.add('visible');
+  };
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+  if (form._honey && form._honey.value) return; // bot
+
+  const data = Object.fromEntries(new FormData(form));
+  delete data._honey;
+  const payload = {
+    'שם': data.name,
+    'אימייל': data.email,
+    'טלפון': data.phone || '—',
+    'הודעה': data.message,
+    _replyto: data.email,
+    _subject: 'פנייה חדשה מהאתר — ' + data.name,
+    _template: 'table',
+    _captcha: 'false'
+  };
+
+  btn.disabled = true;
+  const label = btn.textContent;
+  btn.textContent = 'שולח…';
+  status.classList.remove('visible');
+
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok || String(json.success) === 'false') throw new Error(json.message || res.status);
+    show('תודה! ההודעה נשלחה, נחזור אליכם בקרוב.');
+    form.reset();
+  } catch (err) {
+    const body = encodeURIComponent(`${data.message}\n\n${data.name} | ${data.phone || ''} | ${data.email}`);
+    show(`לא הצלחנו לשלוח כרגע. אפשר <a href="mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('פנייה מהאתר')}&body=${body}">לשלוח במייל</a> או להתקשר 052-7577206.`, true);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = label;
+  }
 }
+
+// --- Process journey: swap plan image as each step scrolls into focus ---
+(function () {
+  const steps = document.querySelectorAll('.journey-step');
+  if (!steps.length) return;
+  const imgs  = document.querySelectorAll('.journey-img');
+  const bars  = document.querySelectorAll('.journey-progress span');
+  function activate(i) {
+    steps.forEach((s, k) => s.classList.toggle('is-active', k === i));
+    imgs.forEach((im, k) => im.classList.toggle('is-active', k === i));
+    bars.forEach((b, k) => b.classList.toggle('on', k <= i));
+  }
+  activate(0);
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) activate([...steps].indexOf(en.target));
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  steps.forEach(s => io.observe(s));
+})();
+
+// --- Before / after slider ---
+(function () {
+  const slider = document.getElementById('baSlider');
+  if (!slider) return;
+  const range = slider.querySelector('.ba-range');
+  const set = v => slider.style.setProperty('--pos', v + '%');
+  range.addEventListener('input', () => set(range.value));
+  // Gentle hint on first view: sweep the line so visitors see it moves
+  const io = new IntersectionObserver(([en]) => {
+    if (!en.isIntersecting) return;
+    io.disconnect();
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const seq = [50, 30, 70, 50];
+    let t0 = null;
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      const p = Math.min((ts - t0) / 1800, 1) * (seq.length - 1);
+      const i = Math.min(Math.floor(p), seq.length - 2), f = p - i;
+      const e = f < .5 ? 2 * f * f : 1 - Math.pow(-2 * f + 2, 2) / 2;
+      const v = seq[i] + (seq[i + 1] - seq[i]) * e;
+      set(v); range.value = v;
+      if (p < seq.length - 1) requestAnimationFrame(step);
+    }
+    setTimeout(() => requestAnimationFrame(step), 400);
+  }, { threshold: 0.6 });
+  io.observe(slider);
+})();
 
 
 // --- Lightbox with navigation ---
