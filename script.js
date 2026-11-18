@@ -480,3 +480,19 @@ fadeTargets.forEach(el => {
     updateUI();
   });
 })();
+
+// --- Section dividers: draw the logo's pencil stroke left → right on scroll ---
+(function () {
+  const dividers = document.querySelectorAll('.sketch-divider');
+  if (!dividers.length) return;
+  if (!('IntersectionObserver' in window)) return; // stays fully visible (no .js class)
+  document.documentElement.classList.add('js');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in-view');
+      io.unobserve(en.target);
+    });
+  }, { threshold: 0.5, rootMargin: '0px 0px -8% 0px' });
+  dividers.forEach(d => io.observe(d));
+})();
